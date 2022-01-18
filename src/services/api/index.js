@@ -1,0 +1,1 @@
+export { mockapi } from './mockapi';
