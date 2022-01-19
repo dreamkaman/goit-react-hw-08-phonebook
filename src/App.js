@@ -1,24 +1,21 @@
 import { Route, Switch } from 'react-router-dom';
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Suspense } from 'react';
 
-// import ContactForm from './components/ContactForm';
-// import Section from './components/Section';
-// import ContactList from './components/ContactList';
 import Navigation from './components/Navigation';
 import Container from './components/Container';
-// import UserMenu from './components/Navigation/UserMenu';
 
-// import Filter from './components/Filter';
-
-import { HomeView } from './views/HomeView.js';
-import { RegisterView } from './views/RegisterView.js';
-import { LoginView } from './views/LoginView.js';
-import { PhonebookView } from './views/PhonebookView.js';
 import { authOperations } from './redux/auth/authOperations';
+const RegisterView = lazy(() => import('./views/RegisterView'));
+const LoginView = lazy(() => import('./views/LoginView'));
+const PhonebookView = lazy(() => import('./views/PhonebookView'));
 
-// import styles from './App.module.css';
+// import { HomeView } from './views/HomeView';
+// import { RegisterView } from './views/RegisterView';
+// import { LoginView } from './views/LoginView';
+// import { PhonebookView } from './views/PhonebookView';
+
+const HomeView = lazy(() => import('./views/HomeView.js'));
 
 function App() {
   const dispatch = useDispatch();

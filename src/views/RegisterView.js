@@ -9,7 +9,7 @@ import { authOperations } from '../redux/auth/authOperations';
 
 import styles from '../components/ContactForm/InputElement/InputElement';
 
-export const RegisterView = () => {
+const RegisterView = () => {
   const dispatch = useDispatch();
 
   const [user, setUser] = useState({ name: '', email: '', password: '' });
@@ -64,3 +64,5 @@ export const RegisterView = () => {
     </div>
   );
 };
+
+export default RegisterView;

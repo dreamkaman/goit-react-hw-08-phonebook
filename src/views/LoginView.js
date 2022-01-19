@@ -8,7 +8,7 @@ import Button from '../components/Button';
 import styles from '../components/ContactForm/InputElement/InputElement';
 import { authOperations } from '../redux/auth/authOperations';
 
-export const LoginView = () => {
+const LoginView = () => {
   const dispatch = useDispatch();
 
   const [user, setUser] = useState({ email: '', password: '' });
@@ -53,3 +53,5 @@ export const LoginView = () => {
     </>
   );
 };
+
+export default LoginView;
