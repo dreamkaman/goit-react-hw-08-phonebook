@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// import axios from 'axios';
 
 import { fetchContacts, addContact } from '../../redux/contacts/contactsOperations.js';
 import { contactsSelectors } from '../../redux/contacts/contactsSelector.js';
@@ -11,11 +12,14 @@ import styles from './ContactForm.module.css';
 
 function ContactForm() {
   const dispatch = useDispatch();
+
   const contacts = useSelector(contactsSelectors.getAllContacts);
 
-  const [contact, setContact] = useState({ name: '', phone: '' });
+  const [contact, setContact] = useState({ name: '', number: '' });
 
-  const { name, phone } = contact;
+  const { name, number } = contact;
+
+  // console.log(axios.defaults.headers.common.Autorization);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -35,9 +39,9 @@ function ContactForm() {
       return;
     }
 
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number }));
 
-    setContact({ name: '', phone: '' });
+    setContact({ name: '', number: '' });
   };
 
   function isContactExist(name) {
@@ -56,10 +60,10 @@ function ContactForm() {
         onChange={handleChange}
       />
       <InputElement
-        value={phone}
+        value={number}
         text="Number"
         type="tel"
-        name="phone"
+        name="number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         onChange={handleChange}

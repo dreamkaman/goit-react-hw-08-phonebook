@@ -5,14 +5,6 @@ import styles from './ContactList.module.css';
 import { deleteContact } from '../../redux/contacts/contactsOperations';
 import { contactsSelectors } from '../../redux/contacts/contactsSelector';
 
-// function getFilteredContacts(state) {
-//   const {
-//     phoneBook: { contacts },
-//     filter,
-//   } = state;
-//   return contacts.filter(contact => contact.name.toUpperCase().includes(filter.toUpperCase()));
-// }
-
 const ContactList = () => {
   const filteredContacts = useSelector(contactsSelectors.getFilteredContacts);
 
@@ -22,10 +14,10 @@ const ContactList = () => {
     return null;
   }
 
-  const elements = filteredContacts.map(({ name, id, phone }) => {
+  const elements = filteredContacts.map(({ name, id, number }) => {
     return (
       <li key={id} className={styles.list}>
-        {name}: {phone}{' '}
+        {name}: {number}{' '}
         <Button type="button" text="Delete" onClick={() => dispatch(deleteContact(id))} />
       </li>
     );

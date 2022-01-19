@@ -1,3 +1,5 @@
+@import 'modern-normalize/modern-normalize.css';
+
 .filter {
   display: flex;
   flex-direction: column;
