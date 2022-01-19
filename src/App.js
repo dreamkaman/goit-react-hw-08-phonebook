@@ -4,8 +4,10 @@ import { useDispatch } from 'react-redux';
 
 import Navigation from './components/Navigation';
 import Container from './components/Container';
+import PrivateRoute from './components/PrivateRoute';
 
 import { authOperations } from './redux/auth/authOperations';
+
 const RegisterView = lazy(() => import('./views/RegisterView'));
 const LoginView = lazy(() => import('./views/LoginView'));
 const PhonebookView = lazy(() => import('./views/PhonebookView'));
@@ -29,7 +31,8 @@ function App() {
             <Route path="/" exact component={HomeView} />
             <Route path="/register" component={RegisterView} />
             <Route path="/login" component={LoginView} />
-            <Route path="/contacts" component={PhonebookView} />
+            <PrivateRoute path="/contacts">{PhonebookView}</PrivateRoute>
+            {/* <Route path="/contacts" component={PhonebookView} /> */}
           </Suspense>
         </Switch>
       </Container>
