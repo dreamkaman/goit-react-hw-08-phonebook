@@ -32,9 +32,9 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await phonebookAPI.deleteContact(id);
+      await phonebookAPI.deleteContact(id);
 
-      return response.data;
+      return { id };
     } catch (e) {
       return rejectWithValue(e.response.data);
     }

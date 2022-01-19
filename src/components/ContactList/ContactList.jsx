@@ -4,10 +4,10 @@ import Button from '../Button';
 import styles from './ContactList.module.css';
 import { deleteContact } from '../../redux/contacts/contactsOperations';
 import { contactsSelectors } from '../../redux/contacts/contactsSelector';
+// import { useEffect } from 'react';
 
 const ContactList = () => {
   const filteredContacts = useSelector(contactsSelectors.getFilteredContacts);
-
   const dispatch = useDispatch();
 
   if (!filteredContacts.length) {
