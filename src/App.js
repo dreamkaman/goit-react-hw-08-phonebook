@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 
 import Navigation from './components/Navigation';
 import Container from './components/Container';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/Navigation/PrivateRoute';
+import PublicRoute from './components/Navigation/PublicRoute';
 
 import { authOperations } from './redux/auth/authOperations';
 
@@ -29,9 +30,15 @@ function App() {
         <Switch>
           <Suspense fallback={<p>...loading. Please wait!</p>}>
             <Route path="/" exact component={HomeView} />
-            <Route path="/register" component={RegisterView} />
-            <Route path="/login" component={LoginView} />
-            <PrivateRoute path="/contacts">{PhonebookView}</PrivateRoute>
+            <PublicRoute exact path="/register" restricted>
+              <RegisterView />
+            </PublicRoute>
+            <PublicRoute exact path="/login" restricted>
+              <LoginView />
+            </PublicRoute>
+            <PrivateRoute path="/contacts">
+              <PhonebookView />
+            </PrivateRoute>
             {/* <Route path="/contacts" component={PhonebookView} /> */}
           </Suspense>
         </Switch>
